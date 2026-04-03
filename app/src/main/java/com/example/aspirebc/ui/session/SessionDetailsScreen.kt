@@ -17,8 +17,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.aspirebc.ui.components.BottomNavigationBar
 import com.example.aspirebc.ui.theme.*
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SessionDetailsScreen() {
     Scaffold(
@@ -90,7 +92,7 @@ fun SessionDetailsScreen() {
                 Spacer(modifier = Modifier.height(16.dp))
                 Box(
                     modifier = Modifier
-                        .clip(RoundedCornerShape(full = 12.dp))
+                        .clip(RoundedCornerShape(12.dp))
                         .background(SecondaryContainer)
                         .padding(horizontal = 12.dp, vertical = 4.dp)
                 ) {

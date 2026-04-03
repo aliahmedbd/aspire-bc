@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import com.example.aspirebc.ui.components.BottomNavigationBar
 import com.example.aspirebc.ui.theme.*
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MembersScreen() {
     var searchQuery by remember { mutableStateOf("") }
@@ -118,7 +119,7 @@ fun MembersScreen() {
                         val isSelected = selectedFilter == filter
                         Button(
                             onClick = { selectedFilter = filter },
-                            shape = RoundedCornerShape(full = 12.dp),
+                            shape = RoundedCornerShape(12.dp),
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = if (isSelected) TertiaryFixed else SurfaceContainerLow,
                                 contentColor = if (isSelected) OnTertiaryFixed else OnSurfaceVariant
@@ -178,7 +179,7 @@ fun MembersScreen() {
 fun MemberItem(index: Int) {
     Card(
         modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(full = 12.dp),
+        shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.cardColors(containerColor = SurfaceContainerLow)
     ) {
         Row(

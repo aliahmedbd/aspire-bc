@@ -6,6 +6,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -19,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import com.example.aspirebc.ui.components.BottomNavigationBar
 import com.example.aspirebc.ui.theme.*
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PaymentsScreen() {
     Scaffold(
@@ -37,7 +40,7 @@ fun PaymentsScreen() {
                 },
                 navigationIcon = {
                     IconButton(onClick = { /* Back */ }) {
-                        Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null, tint = Primary)
+                        Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null, tint = Primary)
                     }
                 }
             )
@@ -79,7 +82,7 @@ fun PaymentsScreen() {
                         )
                         Spacer(modifier = Modifier.height(16.dp))
                         LinearProgressIndicator(
-                            progress = 0.5f,
+                            progress = { 0.5f },
                             modifier = Modifier.fillMaxWidth().height(8.dp).clip(CircleShape),
                             color = TertiaryFixed,
                             trackColor = Color.White.copy(alpha = 0.1f)
@@ -185,7 +188,7 @@ fun PaymentsScreen() {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(text = "Confirm My Payment", style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold), color = Color.White)
                         Spacer(modifier = Modifier.width(8.dp))
-                        Icon(imageVector = Icons.Default.KeyboardDoubleArrowRight, contentDescription = null, tint = TertiaryFixed)
+                        Icon(imageVector = Icons.AutoMirrored.Filled.ArrowForward, contentDescription = null, tint = TertiaryFixed)
                     }
                 }
             }

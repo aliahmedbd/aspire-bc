@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.sp
 import com.example.aspirebc.ui.components.BottomNavigationBar
 import com.example.aspirebc.ui.theme.*
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AdminScreen() {
     Scaffold(
