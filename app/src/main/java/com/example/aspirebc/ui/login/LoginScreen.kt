@@ -1,4 +1,4 @@
-package com.example.aspirebc.ui.screens
+package com.example.aspirebc.ui.login
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border

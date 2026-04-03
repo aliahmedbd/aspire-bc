@@ -1,4 +1,4 @@
-package com.example.aspirebc.ui.screens
+package com.example.aspirebc.ui.admin
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.aspirebc.ui.components.BottomNavigationBar
 import com.example.aspirebc.ui.theme.*
 
 @Composable

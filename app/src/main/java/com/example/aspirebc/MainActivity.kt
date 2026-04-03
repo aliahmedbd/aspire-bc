@@ -8,7 +8,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import com.example.aspirebc.ui.screens.*
+import com.example.aspirebc.ui.admin.AdminScreen
+import com.example.aspirebc.ui.home.HomeScreen
+import com.example.aspirebc.ui.login.LoginScreen
+import com.example.aspirebc.ui.member.MembersScreen
+import com.example.aspirebc.ui.payment.PaymentsScreen
+import com.example.aspirebc.ui.profile.ProfileScreen
+import com.example.aspirebc.ui.session.CreateSessionScreen
+import com.example.aspirebc.ui.session.SessionDetailsScreen
 import com.example.aspirebc.ui.theme.AspireBCTheme
 
 class MainActivity : ComponentActivity() {
