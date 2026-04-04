@@ -1,0 +1,25 @@
+package com.example.aspirebc.ui.theme
+
+import androidx.compose.ui.graphics.Color
+
+val Primary = Color(0xFF003461)
+val PrimaryContainer = Color(0xFF004B87)
+val OnPrimaryContainer = Color(0xFF8ABCFF)
+val Secondary = Color(0xFF54606B)
+val SecondaryContainer = Color(0xFFD7E3EF)
+val OnSecondaryContainer = Color(0xFF111D29)
+val Tertiary = Color(0xFFBEF500)
+val OnTertiary = Color(0xFF151F00)
+val TertiaryFixed = Color(0xFFBEF500)
+val OnTertiaryFixed = Color(0xFF151F00)
+val TertiaryFixedDim = Color(0xFFA6D700)
+val Background = Color(0xFFF8FAFB)
+val Surface = Color(0xFFF8FAFB)
+val SurfaceContainerHigh = Color(0xFFECEFF0)
+val SurfaceContainerHighest = Color(0xFFE0E3E4)
+val SurfaceContainerLow = Color(0xFFF2F4F5)
+val SurfaceContainerLowest = Color(0xFFFFFFFF)
+val OnSurface = Color(0xFF191C1D)
+val OnSurfaceVariant = Color(0xFF424750)
+val OutlineVariant = Color(0xFFC2C6D1)
+val Error = Color(0xFFBA1A1A)

@@ -1,0 +1,5 @@
+{
+  "name": "Aspire BC Android",
+  "description": "Native Android app for Aspire Badminton Club built with Kotlin, Jetpack Compose, and MVI architecture.",
+  "requestFramePermissions": []
+}
