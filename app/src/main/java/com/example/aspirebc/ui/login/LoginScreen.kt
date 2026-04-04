@@ -19,15 +19,33 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.aspirebc.R
 import com.example.aspirebc.ui.theme.*
+import kotlinx.coroutines.flow.collectLatest
 
 @Composable
-fun LoginScreen() {
-    var selectedMembership by remember { mutableStateOf("weekday") }
+fun LoginScreen(
+    onLoginSuccess: () -> Unit,
+    viewModel: LoginViewModel = hiltViewModel()
+) {
+    val state by viewModel.state.collectAsState()
+
+    LaunchedEffect(Unit) {
+        viewModel.effect.collectLatest { effect ->
+            when (effect) {
+                LoginContract.Effect.NavigateToHome -> onLoginSuccess()
+                is LoginContract.Effect.ShowError -> {
+                    // Show snackbar or toast
+                }
+            }
+        }
+    }
 
     Box(
         modifier = Modifier
@@ -73,7 +91,7 @@ fun LoginScreen() {
             Spacer(modifier = Modifier.height(24.dp))
 
             Text(
-                text = "ASPIRE BC",
+                text = stringResource(R.string.app_name).uppercase(),
                 style = MaterialTheme.typography.displayLarge.copy(
                     fontSize = 48.sp,
                     lineHeight = 44.sp,
@@ -83,7 +101,7 @@ fun LoginScreen() {
             )
 
             Text(
-                text = "HIGH-PERFORMANCE BADMINTON CLUB",
+                text = stringResource(R.string.brand_subtitle),
                 style = MaterialTheme.typography.labelMedium.copy(
                     color = Secondary,
                     letterSpacing = 2.sp
@@ -104,12 +122,12 @@ fun LoginScreen() {
                     modifier = Modifier.padding(32.dp)
                 ) {
                     Text(
-                        text = "Welcome to Aspire",
+                        text = stringResource(R.string.welcome_title),
                         style = MaterialTheme.typography.headlineLarge.copy(fontSize = 24.sp),
                         color = OnSurface
                     )
                     Text(
-                        text = "Join the court and master your game with our elite training ecosystem.",
+                        text = stringResource(R.string.welcome_subtitle),
                         style = MaterialTheme.typography.bodyLarge.copy(fontSize = 14.sp),
                         color = OnSurfaceVariant,
                         modifier = Modifier.padding(top = 8.dp)
@@ -118,7 +136,7 @@ fun LoginScreen() {
                     Spacer(modifier = Modifier.height(40.dp))
 
                     Text(
-                        text = "SELECT MEMBERSHIP TYPE",
+                        text = stringResource(R.string.select_membership),
                         style = MaterialTheme.typography.labelMedium.copy(
                             color = Primary,
                             letterSpacing = 2.sp
@@ -128,37 +146,43 @@ fun LoginScreen() {
                     Spacer(modifier = Modifier.height(12.dp))
 
                     MembershipOption(
-                        title = "Weekday Member",
-                        subtitle = "Mon - Fri Access • 6AM - 10PM",
+                        title = stringResource(R.string.weekday_member),
+                        subtitle = stringResource(R.string.weekday_member_desc),
                         icon = Icons.Default.CalendarMonth,
-                        isSelected = selectedMembership == "weekday",
-                        onClick = { selectedMembership = "weekday" }
+                        isSelected = state.selectedMembership == "weekday",
+                        onClick = { viewModel.onIntent(LoginContract.Intent.SelectMembership("weekday")) }
                     )
 
                     Spacer(modifier = Modifier.height(12.dp))
 
                     MembershipOption(
-                        title = "Weekend Member",
-                        subtitle = "Sat - Sun Access • All Day Priority",
+                        title = stringResource(R.string.weekend_member),
+                        subtitle = stringResource(R.string.weekend_member_desc),
                         icon = Icons.Default.EventAvailable,
-                        isSelected = selectedMembership == "weekend",
-                        onClick = { selectedMembership = "weekend" }
+                        isSelected = state.selectedMembership == "weekend",
+                        onClick = { viewModel.onIntent(LoginContract.Intent.SelectMembership("weekend")) }
                     )
 
                     Spacer(modifier = Modifier.height(40.dp))
 
                     Button(
-                        onClick = { /* Handle Google Login */ },
+                        onClick = { viewModel.onIntent(LoginContract.Intent.LoginClicked) },
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(56.dp),
                         shape = RoundedCornerShape(12.dp),
-                        colors = ButtonDefaults.buttonColors(containerColor = TertiaryFixed)
+                        colors = ButtonDefaults.buttonColors(containerColor = TertiaryFixed),
+                        enabled = !state.isLoading
                     ) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            // Google Icon placeholder
+                        if (state.isLoading) {
+                            CircularProgressIndicator(
+                                modifier = Modifier.size(24.dp),
+                                color = OnTertiaryFixed,
+                                strokeWidth = 2.dp
+                            )
+                        } else {
                             Text(
-                                text = "Continue with Google",
+                                text = stringResource(R.string.continue_google),
                                 style = MaterialTheme.typography.titleLarge.copy(fontSize = 18.sp),
                                 color = OnTertiaryFixed
                             )
@@ -168,7 +192,7 @@ fun LoginScreen() {
                     Spacer(modifier = Modifier.height(24.dp))
 
                     Text(
-                        text = "By continuing, you agree to our Terms of Play and Privacy Policy.",
+                        text = stringResource(R.string.terms_privacy_notice),
                         style = MaterialTheme.typography.bodyLarge.copy(fontSize = 12.sp),
                         color = OnSurfaceVariant,
                         textAlign = TextAlign.Center,

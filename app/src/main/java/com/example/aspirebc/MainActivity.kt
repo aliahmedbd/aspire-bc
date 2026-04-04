@@ -4,40 +4,46 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import com.example.aspirebc.ui.admin.AdminScreen
-import com.example.aspirebc.ui.home.HomeScreen
-import com.example.aspirebc.ui.login.LoginScreen
-import com.example.aspirebc.ui.member.MembersScreen
-import com.example.aspirebc.ui.payment.PaymentsScreen
-import com.example.aspirebc.ui.profile.ProfileScreen
-import com.example.aspirebc.ui.session.CreateSessionScreen
-import com.example.aspirebc.ui.session.SessionDetailsScreen
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
+import com.example.aspirebc.ui.components.BottomNavigationBar
 import com.example.aspirebc.ui.theme.AspireBCTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             AspireBCTheme {
-                var currentScreen by remember { mutableStateOf("login") }
+                val navController = rememberNavController()
+                val navBackStackEntry by navController.currentBackStackEntryAsState()
+                val currentRoute = navBackStackEntry?.destination?.route
 
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    when (currentScreen) {
-                        "login" -> LoginScreen()
-                        "home" -> HomeScreen()
-                        "session_details" -> SessionDetailsScreen()
-                        "create_session" -> CreateSessionScreen()
-                        "members" -> MembersScreen()
-                        "profile" -> ProfileScreen()
-                        "payments" -> PaymentsScreen()
-                        "admin" -> AdminScreen()
+                    Scaffold(
+                        bottomBar = {
+                            // Check if the current destination is not Login
+                            if (currentRoute != null && !currentRoute.contains("Login")) {
+                                BottomNavigationBar(
+                                    navController = navController
+                                )
+                            }
+                        }
+                    ) { padding ->
+                        AppNavHost(
+                            navController = navController,
+                            modifier = Modifier.padding(padding)
+                        )
                     }
                 }
             }

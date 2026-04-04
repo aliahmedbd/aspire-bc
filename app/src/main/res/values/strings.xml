@@ -1,3 +1,90 @@
 <resources>
     <string name="app_name">Aspire BC</string>
+    <string name="app_title">ASPIRE BADMINTON CLUB</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_members">Members</string>
+    <string name="nav_payments">Payments</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_admin">Admin</string>
+
+    <!-- Home Screen -->
+    <string name="up_next">Up Next</string>
+    <string name="up_next_subtitle">Join the next available court</string>
+    <string name="availability_label">AVAILABILITY</string>
+    <string name="spots_left_format">%1$d SPOTS LEFT</string>
+    <string name="join_session">JOIN SESSION</string>
+
+    <!-- Login Screen -->
+    <string name="brand_subtitle">HIGH-PERFORMANCE BADMINTON CLUB</string>
+    <string name="welcome_title">Welcome to Aspire</string>
+    <string name="welcome_subtitle">Join the court and master your game with our elite training ecosystem.</string>
+    <string name="select_membership">SELECT MEMBERSHIP TYPE</string>
+    <string name="weekday_member">Weekday Member</string>
+    <string name="weekday_member_desc">Mon - Fri Access • 6AM - 10PM</string>
+    <string name="weekend_member">Weekend Member</string>
+    <string name="weekend_member_desc">Sat - Sun Access • All Day Priority</string>
+    <string name="continue_google">Continue with Google</string>
+    <string name="terms_privacy_notice">By continuing, you agree to our Terms of Play and Privacy Policy.</string>
+
+    <!-- Members Screen -->
+    <string name="club_directory">CLUB DIRECTORY</string>
+    <string name="active_members_title">Active Members</string>
+    <string name="search_placeholder">Find a partner...</string>
+    <string name="elite_tip_label">ELITE TIP</string>
+    <string name="coach_name">COACH M. KHAN</string>
+    <string name="court_active_format">COURT %1$s ACTIVE</string>
+
+    <!-- Payments Screen -->
+    <string name="payments_title">Aspire Badminton</string>
+    <string name="member_performance">MEMBER PERFORMANCE</string>
+    <string name="months_progress">1/2 MONTHS</string>
+    <string name="current_streak">CURRENT STREAK</string>
+    <string name="elite_tier">Elite Tier</string>
+    <string name="total_saved_label">TOTAL SAVED</string>
+    <string name="this_month">This Month</string>
+    <string name="membership_payment">Membership Payment</string>
+    <string name="unpaid">UNPAID</string>
+    <string name="early_bird_perk">Early Bird Perk</string>
+    <string name="streak_reward_message">Maintained streak reward unlocked!</string>
+    <string name="next_month">NEXT MONTH</string>
+    <string name="free">FREE</string>
+    <string name="confirm_payment">Confirm My Payment</string>
+
+    <!-- Profile Screen -->
+    <string name="elite_member_profile">ELITE MEMBER PROFILE</string>
+    <string name="member_since_format">Member Since %1$s</string>
+    <string name="premium_plus">PREMIUM PLUS</string>
+    <string name="mobile_number_label">MOBILE NUMBER</string>
+    <string name="home_address_label">HOME ADDRESS</string>
+    <string name="emergency_contact_label">EMERGENCY CONTACT</string>
+
+    <!-- Session Creation/Details -->
+    <string name="create_session_title">Create Session</string>
+    <string name="save_publish_session">Save &amp; Publish Session</string>
+    <string name="session_logistics">SESSION LOGISTICS</string>
+    <string name="new_court_event">NEW COURT EVENT</string>
+    <string name="session_category">SESSION CATEGORY</string>
+    <string name="date_label">DATE</string>
+    <string name="start_time_label">START TIME</string>
+    <string name="duration_label">DURATION (HOURS)</string>
+    <string name="venue_location">VENUE LOCATION</string>
+    <string name="allocated_courts">ALLOCATED COURTS</string>
+    <string name="multiple_values_ok">MULTIPLE\nVALUES OK</string>
+    <string name="session_details_title">SESSION DETAILS</string>
+    <string name="confirm_spot">Confirm My Spot</string>
+    <string name="open_play">OPEN PLAY</string>
+    <string name="spots_filled_format">%1$d / %2$d SPOTS FILLED</string>
+    <string name="schedule_label">SCHEDULE</string>
+    <string name="venue_label">VENUE</string>
+    <string name="attending_players">Attending Players</string>
+
+    <!-- Admin Screen -->
+    <string name="admin_control">Admin Control</string>
+    <string name="admin_subtitle">Manage sessions, memberships, and club logistics.</string>
+    <string name="add_session_btn">ADD A SESSION</string>
+    <string name="active_members_label">ACTIVE MEMBERS</string>
+    <string name="pending_approvals">Pending Approvals</string>
+    <string name="new_regs_format">%1$d NEW REGS</string>
 </resources>

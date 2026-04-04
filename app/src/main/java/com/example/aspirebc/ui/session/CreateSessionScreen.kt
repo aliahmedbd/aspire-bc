@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -12,15 +13,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.aspirebc.R
 import com.example.aspirebc.ui.theme.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CreateSessionScreen() {
+fun CreateSessionScreen(onBack: () -> Unit) {
     var sessionCategory by remember { mutableStateOf("weekday") }
 
     Scaffold(
@@ -28,7 +31,7 @@ fun CreateSessionScreen() {
             TopAppBar(
                 title = {
                     Text(
-                        text = "Create Session",
+                        text = stringResource(R.string.create_session_title),
                         style = MaterialTheme.typography.titleLarge.copy(
                             fontWeight = FontWeight.Black,
                             fontSize = 18.sp,
@@ -39,7 +42,7 @@ fun CreateSessionScreen() {
                 },
                 navigationIcon = {
                     IconButton(onClick = { /* Back */ }) {
-                        Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null, tint = Primary)
+                        Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null, tint = Primary)
                     }
                 }
             )
@@ -63,7 +66,7 @@ fun CreateSessionScreen() {
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(
-                            text = "Save & Publish Session",
+                            text = stringResource(R.string.save_publish_session),
                             style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Black),
                             color = OnTertiaryFixed
                         )
@@ -85,14 +88,14 @@ fun CreateSessionScreen() {
                 Spacer(modifier = Modifier.height(16.dp))
                 Column {
                     Text(
-                        text = "SESSION LOGISTICS",
+                        text = stringResource(R.string.session_logistics),
                         style = MaterialTheme.typography.labelMedium.copy(
                             color = OnSurfaceVariant,
                             letterSpacing = 2.sp
                         )
                     )
                     Text(
-                        text = "NEW COURT EVENT",
+                        text = stringResource(R.string.new_court_event),
                         style = MaterialTheme.typography.displayLarge.copy(
                             fontSize = 48.sp,
                             lineHeight = 44.sp,
@@ -105,7 +108,7 @@ fun CreateSessionScreen() {
             item {
                 Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     Text(
-                        text = "SESSION CATEGORY",
+                        text = stringResource(R.string.session_category),
                         style = MaterialTheme.typography.labelMedium.copy(
                             color = OnSurfaceVariant,
                             letterSpacing = 1.sp
@@ -128,7 +131,7 @@ fun CreateSessionScreen() {
                             ),
                             elevation = if (sessionCategory == "weekday") ButtonDefaults.buttonElevation(defaultElevation = 2.dp) else null
                         ) {
-                            Text(text = "Weekday Session", style = MaterialTheme.typography.labelMedium)
+                            Text(text = stringResource(R.string.weekday_member).replace("Member", "Session"), style = MaterialTheme.typography.labelMedium)
                         }
                         Button(
                             onClick = { sessionCategory = "weekend" },
@@ -140,7 +143,7 @@ fun CreateSessionScreen() {
                             ),
                             elevation = if (sessionCategory == "weekend") ButtonDefaults.buttonElevation(defaultElevation = 2.dp) else null
                         ) {
-                            Text(text = "Weekend Session", style = MaterialTheme.typography.labelMedium)
+                            Text(text = stringResource(R.string.weekend_member).replace("Member", "Session"), style = MaterialTheme.typography.labelMedium)
                         }
                     }
                 }
@@ -149,7 +152,7 @@ fun CreateSessionScreen() {
             item {
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                     Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                        Text(text = "DATE", style = MaterialTheme.typography.labelMedium.copy(color = OnSurfaceVariant, letterSpacing = 1.sp))
+                        Text(text = stringResource(R.string.date_label), style = MaterialTheme.typography.labelMedium.copy(color = OnSurfaceVariant, letterSpacing = 1.sp))
                         OutlinedTextField(
                             value = "05/24/2024",
                             onValueChange = {},
@@ -165,7 +168,7 @@ fun CreateSessionScreen() {
                         )
                     }
                     Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                        Text(text = "START TIME", style = MaterialTheme.typography.labelMedium.copy(color = OnSurfaceVariant, letterSpacing = 1.sp))
+                        Text(text = stringResource(R.string.start_time_label), style = MaterialTheme.typography.labelMedium.copy(color = OnSurfaceVariant, letterSpacing = 1.sp))
                         OutlinedTextField(
                             value = "06:00 PM",
                             onValueChange = {},
@@ -185,7 +188,7 @@ fun CreateSessionScreen() {
 
             item {
                 Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                    Text(text = "DURATION (HOURS)", style = MaterialTheme.typography.labelMedium.copy(color = OnSurfaceVariant, letterSpacing = 1.sp))
+                    Text(text = stringResource(R.string.duration_label), style = MaterialTheme.typography.labelMedium.copy(color = OnSurfaceVariant, letterSpacing = 1.sp))
                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         listOf("1.0", "2.0", "3.0", "4.0+").forEach { duration ->
                             val isSelected = duration == "2.0"
@@ -207,7 +210,7 @@ fun CreateSessionScreen() {
 
             item {
                 Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                    Text(text = "VENUE LOCATION", style = MaterialTheme.typography.labelMedium.copy(color = OnSurfaceVariant, letterSpacing = 1.sp))
+                    Text(text = stringResource(R.string.venue_location), style = MaterialTheme.typography.labelMedium.copy(color = OnSurfaceVariant, letterSpacing = 1.sp))
                     OutlinedTextField(
                         value = "",
                         onValueChange = {},
@@ -227,7 +230,7 @@ fun CreateSessionScreen() {
 
             item {
                 Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                    Text(text = "ALLOCATED COURTS", style = MaterialTheme.typography.labelMedium.copy(color = OnSurfaceVariant, letterSpacing = 1.sp))
+                    Text(text = stringResource(R.string.allocated_courts), style = MaterialTheme.typography.labelMedium.copy(color = OnSurfaceVariant, letterSpacing = 1.sp))
                     Card(
                         modifier = Modifier.fillMaxWidth(),
                         shape = RoundedCornerShape(16.dp),
@@ -260,7 +263,7 @@ fun CreateSessionScreen() {
                                 )
                             )
                             Text(
-                                text = "MULTIPLE\nVALUES OK",
+                                text = stringResource(R.string.multiple_values_ok),
                                 style = MaterialTheme.typography.labelMedium.copy(fontSize = 10.sp, lineHeight = 10.sp),
                                 color = OnSurfaceVariant,
                                 textAlign = TextAlign.End
